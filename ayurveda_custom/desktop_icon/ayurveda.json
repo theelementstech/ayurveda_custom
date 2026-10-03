@@ -1,0 +1,20 @@
+{
+ "app": "ayurveda_custom",
+ "creation": "2026-10-03 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon": "leaf",
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Ayurveda",
+ "link_to": "Ayurveda",
+ "link_type": "Workspace Sidebar",
+ "modified": "2026-10-03 12:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "Ayurveda",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}

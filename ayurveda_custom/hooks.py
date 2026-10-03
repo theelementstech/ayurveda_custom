@@ -86,7 +86,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "ayurveda_custom.install.before_install"
-# after_install = "ayurveda_custom.install.after_install"
+after_install = "ayurveda_custom.install.after_install"
 
 # Uninstallation
 # ------------
@@ -262,3 +262,7 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+# Tree Views
+# ----------
+treeviews = ["Item Group"]
