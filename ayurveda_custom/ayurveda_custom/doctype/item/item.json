@@ -13,6 +13,7 @@
   "column_break_1",
   "uom",
   "book_name_and_page_no",
+  "is_finished_goods",
   "disabled"
  ],
  "fields": [
@@ -69,6 +70,14 @@
    "label": "Book Name and Page No."
   },
   {
+   "fieldname": "is_finished_goods",
+   "fieldtype": "Check",
+   "label": "Is Finished Goods",
+   "default": "0",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
    "fieldname": "disabled",
    "fieldtype": "Check",
    "label": "Disabled",
@@ -78,7 +87,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-03 12:00:00.000000",
+ "modified": "2026-10-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Ayurveda Custom",
  "name": "Item",

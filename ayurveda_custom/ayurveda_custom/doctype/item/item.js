@@ -23,9 +23,11 @@ frappe.ui.form.on("Item", {
 			frm.add_custom_button(__("BOM"), () => {
 				frappe.new_doc("BOM", { item: frm.doc.name });
 			}, __("Create"));
-			frm.add_custom_button(__("Work Order"), () => {
-				frappe.new_doc("Work Order", { production_item: frm.doc.name });
-			}, __("Create"));
+			if (frm.doc.is_finished_goods) {
+				frm.add_custom_button(__("Work Order"), () => {
+					frappe.new_doc("Work Order", { production_item: frm.doc.name });
+				}, __("Create"));
+			}
 		}
 	},
 });

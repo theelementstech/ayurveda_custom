@@ -3,12 +3,14 @@
 
 frappe.ui.form.on("Work Order", {
 	setup(frm) {
-		frm.set_query("production_item", () => ({ filters: { disabled: 0 } }));
+		frm.set_query("production_item", () => ({
+			filters: { disabled: 0, is_finished_goods: 1 },
+		}));
 		frm.set_query("bom_no", (doc) => {
 			if (!doc.production_item) {
 				frappe.throw(__("Please select Item to Manufacture first"));
 			}
-			return { filters: { item: doc.production_item, is_active: 1 } };
+			return { filters: { item: doc.production_item, is_active: 1, docstatus: 1 } };
 		});
 		frm.set_query("item_code", "required_items", () => ({ filters: { disabled: 0 } }));
 	},
@@ -64,7 +66,7 @@ frappe.ui.form.on("Work Order", {
 		// Auto-select the BOM when the item has exactly one active BOM
 		frappe.db
 			.get_list("BOM", {
-				filters: { item: frm.doc.production_item, is_active: 1 },
+				filters: { item: frm.doc.production_item, is_active: 1, docstatus: 1 },
 				fields: ["name"],
 				limit: 2,
 			})

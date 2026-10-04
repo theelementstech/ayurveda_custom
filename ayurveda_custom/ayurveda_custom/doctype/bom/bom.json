@@ -12,7 +12,8 @@
   "quantity",
   "is_active",
   "raw_materials_section",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -57,7 +58,7 @@
   },
   {
    "fieldname": "quantity",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Quantity",
    "default": "1",
    "reqd": 1,
@@ -69,7 +70,8 @@
    "label": "Is Active",
    "default": "1",
    "in_list_view": 1,
-   "in_standard_filter": 1
+   "in_standard_filter": 1,
+   "allow_on_submit": 1
   },
   {
    "fieldname": "raw_materials_section",
@@ -82,11 +84,21 @@
    "label": "Raw Materials",
    "options": "BOM Item",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "BOM",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-03 12:00:00.000000",
+ "modified": "2026-10-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Ayurveda Custom",
  "name": "BOM",
@@ -103,7 +115,10 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "write": 1
+   "write": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
   }
  ],
  "search_fields": "item,item_name",
@@ -111,5 +126,6 @@
  "sort_order": "DESC",
  "states": [],
  "title_field": "item_name",
- "track_changes": 1
+ "track_changes": 1,
+ "is_submittable": 1
 }

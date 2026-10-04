@@ -5,7 +5,6 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
-from frappe.utils import flt
 
 from ayurveda_custom.ayurveda_custom.doctype.item.item import validate_item_is_enabled
 
@@ -33,8 +32,3 @@ class BOM(Document):
 
 			if row.qty <= 0:
 				frappe.throw(_("{0}: Quantity must be greater than 0").format(row_label))
-
-			if flt(row.rate) < 0:
-				frappe.throw(_("{0}: Rate cannot be negative").format(row_label))
-
-			row.amount = flt(row.qty * flt(row.rate), row.precision("amount"))

@@ -24,7 +24,7 @@ frappe.ui.form.on("BOM", {
 			frappe.set_route("List", "BOM", { item: frm.doc.item });
 		}, __("View"));
 
-		if (frm.doc.is_active) {
+		if (frm.doc.docstatus === 1 && frm.doc.is_active) {
 			frm.add_custom_button(__("Work Order"), () => {
 				frappe.new_doc("Work Order", {
 					production_item: frm.doc.item,
@@ -33,24 +33,22 @@ frappe.ui.form.on("BOM", {
 			}, __("Create"));
 		}
 
+		if (frm.doc.docstatus === 2) return;
+
 		frm.add_custom_button(frm.doc.is_active ? __("Deactivate") : __("Activate"), () => {
 			frm.set_value("is_active", frm.doc.is_active ? 0 : 1);
-			frm.save();
+			frm.save(frm.doc.docstatus === 1 ? "Update" : "Save");
 		});
 	},
 });
 
 frappe.ui.form.on("BOM Item", {
-	qty(frm, cdt, cdn) {
-		calculate_amount(cdt, cdn);
-	},
-
-	rate(frm, cdt, cdn) {
-		calculate_amount(cdt, cdn);
+	item_code(frm, cdt, cdn) {
+		// "Add Multiple" sets item_code without running fetch_from, so fetch here
+		const row = locals[cdt][cdn];
+		if (!row.item_code || row.uom) return;
+		frappe.db.get_value("Item", row.item_code, ["item_name", "uom"]).then(({ message }) => {
+			frappe.model.set_value(cdt, cdn, message);
+		});
 	},
 });
-
-function calculate_amount(cdt, cdn) {
-	const row = locals[cdt][cdn];
-	frappe.model.set_value(cdt, cdn, "amount", flt(row.qty) * flt(row.rate));
-}

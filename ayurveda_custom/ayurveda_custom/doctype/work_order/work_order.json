@@ -9,6 +9,7 @@
   "production_item",
   "item_name",
   "bom_no",
+  "customer",
   "sales_order_no",
   "column_break_1",
   "qty",
@@ -57,6 +58,14 @@
    "in_standard_filter": 1
   },
   {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
    "fieldname": "sales_order_no",
    "fieldtype": "Data",
    "label": "Sales Order No.",
@@ -84,7 +93,8 @@
    "no_copy": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "search_index": 1
+   "search_index": 1,
+   "read_only": 1
   },
   {
    "fieldname": "start_date",
@@ -107,7 +117,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-03 12:00:00.000000",
+ "modified": "2026-10-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Ayurveda Custom",
  "name": "Work Order",
@@ -127,7 +137,7 @@
    "write": 1
   }
  ],
- "search_fields": "production_item,item_name,sales_order_no",
+ "search_fields": "production_item,item_name,sales_order_no,customer",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
